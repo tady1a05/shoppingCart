@@ -25,7 +25,17 @@ $(function () {
     });
 
     $(".deleteProduct").click(function () {
+        var bothTrue = true;
+
         $(this).parent().parent().remove();
+
+        $(".selectProduct").each(function () {
+            if ($(this).prop("checked") == false) {
+                bothTrue = false;
+            }
+        });
+
+        $(".selectAll").prop("checked", bothTrue);
     });
 
     $(".deleteAll").click(function () {
