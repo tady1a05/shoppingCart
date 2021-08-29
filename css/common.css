@@ -319,3 +319,21 @@ td>input{
     display: block;
 }
 
+.selected{
+    background-color: #fff4e8 !important;
+}
+
+.deleteProduct:hover{
+    cursor: pointer;
+    color: red;
+}
+
+.deleteSelected:hover{
+    cursor: pointer;
+    color: red;
+}
+
+.deleteAll:hover{
+    cursor: pointer;
+    color: red;
+}

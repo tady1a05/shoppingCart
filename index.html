@@ -12,6 +12,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
         crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
     <title>Document</title>
 </head>
 
@@ -70,7 +72,7 @@
                 <thead class="thead-light">
                     <tr>
                         <th scope="col">
-                            <input type="checkbox" />
+                            <input type="checkbox" class="selectAll" />
                             <span>全選</span>
                         </th>
                         <th scope="col">商品</th>
@@ -83,7 +85,7 @@
                 <tbody>
                     <tr>
                         <th scope="row">
-                            <input type="checkbox" />
+                            <input type="checkbox" class="selectProduct" />
                         </th>
                         <td>
                             <img src="upload/p1.jpg" />
@@ -94,11 +96,13 @@
                             <input type="number" />
                         </td>
                         <td>￥12.60</td>
-                        <td>删除</td>
+                        <td>
+                            <span class="deleteProduct">删除</span>
+                        </td>
                     </tr>
                     <tr>
                         <th scope="row">
-                            <input type="checkbox" />
+                            <input type="checkbox" class="selectProduct" />
                         </th>
                         <td>
                             <img src="upload/p2.jpg" />
@@ -109,11 +113,13 @@
                             <input type="number" />
                         </td>
                         <td>￥12.60</td>
-                        <td>删除</td>
+                        <td>
+                            <span class="deleteProduct">删除</span>
+                        </td>
                     </tr>
                     <tr>
                         <th scope="row">
-                            <input type="checkbox" />
+                            <input type="checkbox" class="selectProduct" />
                         </th>
                         <td>
                             <img src="upload/p3.jpg" />
@@ -124,21 +130,23 @@
                             <input type="number" />
                         </td>
                         <td>￥29.80</td>
-                        <td>删除</td>
+                        <td>
+                            <span class="deleteProduct">删除</span>
+                        </td>
                     </tr>
                 </tbody>
             </table>
             <div class="summary-box">
                 <div class="summary-box-content-left">
                     <div class="summary-box-content-selectAll">
-                        <input type="checkbox" />
+                        <input type="checkbox" class="selectAll" />
                         <span>全選</span>
                     </div>
                     <div class="summary-box-content-deleteSelected">
-                        <span>刪除選中的商品</span>
+                        <span class="deleteSelected">刪除選中的商品</span>
                     </div>
                     <div class="summary-box-content-clear">
-                        <span>清理購物車</span>
+                        <span class="deleteAll">清理購物車</span>
                     </div>
                 </div>
                 <div class="summary-box-content-right">
