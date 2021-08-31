@@ -1,4 +1,5 @@
 $(function () {
+    //Select all products function
     $(".selectAll").click(function () {
         if ($(this).prop("checked") == true) {
             $(".selectAll").prop("checked", true);
@@ -9,6 +10,7 @@ $(function () {
         }
     })
 
+    //Select single product function
     $(".selectProduct").click(function () {
         var bothTrue = true;
 
@@ -24,6 +26,7 @@ $(function () {
 
     });
 
+    //delete single product function
     $(".deleteProduct").click(function () {
         var bothTrue = true;
 
@@ -38,6 +41,7 @@ $(function () {
         $(".selectAll").prop("checked", bothTrue);
     });
 
+    //delete all products function
     $(".deleteAll").click(function () {
         $(".selectProduct").parent().parent().remove();
     });
@@ -45,4 +49,51 @@ $(function () {
     $(".deleteSelected").click(function () {
         $(".selected").remove();
     });
+
+    $("input[type=number]").on("keyup", function (event) {
+        var singlePrice = parseFloat($(this).parent().parent().siblings(".singlePrice").text().substring(1));
+        var count = parseFloat($(this).val());
+        if (isNaN(count)) {
+            count = 0;
+        }
+
+        $(this).val(count);
+        $(this).parent().parent().siblings(".smallTotal").text("￥" + Math.round(singlePrice * count * 10) / 10);
+    });
+
+    //add the number of product that you want to buy by input field
+    $("input[type=number]").change(function () {
+        var singlePrice = parseFloat($(this).parent().parent().siblings(".singlePrice").text().substring(1));
+        var count = parseFloat($(this).val());
+        if (isNaN(count)) {
+            count = 0;
+        }
+
+        $(this).val(count);
+        $(this).parent().parent().siblings(".smallTotal").text("￥" + Math.round(singlePrice * count * 10) / 10);
+    })
+
+    //add the number of product by add button
+    $(".numCounterSub").click(function () {
+        var singlePrice = parseFloat($(this).parent().parent().siblings(".singlePrice").text().substring(1));
+        var count = parseFloat($(this).siblings("input[type=number]").val());
+        count--;
+        if (isNaN(count) || count<0) {
+            count = 0;
+        }
+
+        $(this).siblings("input[type=number]").val(count);
+        $(this).parent().parent().siblings(".smallTotal").text("￥" + Math.round(singlePrice * count * 10) / 10);
+    })
+
+    $(".numCounterAdd").click(function () {
+        var singlePrice = parseFloat($(this).parent().parent().siblings(".singlePrice").text().substring(1));
+        var count = parseFloat($(this).siblings("input[type=number]").val());
+        count++;
+        if (isNaN(count)) {
+            count = 0;
+        }
+        $(this).siblings("input[type=number]").val(count);
+        $(this).parent().parent().siblings(".smallTotal").text("￥" + Math.round(singlePrice * count * 10) / 10);
+    })
 });

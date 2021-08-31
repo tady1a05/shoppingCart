@@ -38,14 +38,14 @@
 }
 
 @media screen and (max-width: 460px) {
-    td>input{
-        width: 100px;
+    .numCounter{
+        width: 100px !important;
     }
 }
 
 @media screen and (max-width: 408px) {
-    td>input{
-        width: 60px;
+    .numCounter{
+        width: 60px !important;
     }
 }
 
@@ -175,7 +175,7 @@ td>img{
     float: left;
 }
 
-td>input{
+.numCounter>input{
     height: 24px;
 }
 
@@ -197,7 +197,7 @@ td>input{
     float: right;
 }
 
-.price{
+.Total{
     color: #e2231a;
     font-weight: 700;  
     font-size: 18px;
@@ -336,4 +336,56 @@ td>input{
 .deleteAll:hover{
     cursor: pointer;
     color: red;
+}
+
+input[type=number]{
+    outline: none;
+    text-align: center;
+}
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.numCounter{
+    width: 154px;
+    height: 24px;
+    border: 1px solid #cacbcb;
+    position: relative;
+    text-align: center;
+}
+
+.numCounter>input{
+    width: 100%;
+    height: 100%;
+    border: 0px solid;
+    vertical-align: top;
+}
+
+.numCounterSub{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 18px;
+    height: 22px;
+    line-height: 22px;
+    border-right: 1px solid #cacbcb;
+    cursor: pointer;
+}
+
+.numCounterAdd{
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 18px;
+    height: 22px;
+    line-height: 22px;
+    border-left: 1px solid #cacbcb;
+    cursor: pointer;
+}
+
+.smallTotal{
+    font-weight: 600;
 }
