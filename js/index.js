@@ -47,7 +47,7 @@ $(function () {
     //delete all products function
     $(".deleteAll").click(function () {
         $(".selectProduct").parent().parent().remove();
-        
+
         setTotalCount();
         setTotalPrice();
     });
@@ -60,37 +60,37 @@ $(function () {
     });
 
     $("input[type=number]").on("keyup", function (event) {
-        var singlePrice = parseFloat($(this).parent().parent().siblings(".singlePrice").text().substring(1));
+        var singlePrice = getSinglePrice($(this));
         var count = parseFloat($(this).val());
         if (isNaN(count)) {
             count = 0;
         }
 
         $(this).val(count);
-        $(this).parent().parent().siblings(".smallTotal").text("￥" + (Math.round(singlePrice * count * 10) / 10).toFixed(2));
 
+        setSmallTotal($(this), smallTotalFormula(singlePrice, count))
         setTotalCount();
         setTotalPrice();
     });
 
     //add the number of product that you want to buy by input field
     $("input[type=number]").change(function () {
-        var singlePrice = parseFloat($(this).parent().parent().siblings(".singlePrice").text().substring(1));
+        var singlePrice = getSinglePrice($(this));
         var count = parseFloat($(this).val());
         if (isNaN(count)) {
             count = 0;
         }
 
         $(this).val(count);
-        $(this).parent().parent().siblings(".smallTotal").text("￥" + (Math.round(singlePrice * count * 10) / 10).toFixed(2));
 
+        setSmallTotal($(this), smallTotalFormula(singlePrice, count))
         setTotalCount();
         setTotalPrice();
     })
 
     //add the number of product by add button
     $(".numCounterSub").click(function () {
-        var singlePrice = parseFloat($(this).parent().parent().siblings(".singlePrice").text().substring(1));
+        var singlePrice = getSinglePrice($(this));
         var count = parseFloat($(this).siblings("input[type=number]").val());
         count--;
         if (isNaN(count) || count < 0) {
@@ -98,14 +98,14 @@ $(function () {
         }
 
         $(this).siblings("input[type=number]").val(count);
-        $(this).parent().parent().siblings(".smallTotal").text("￥" + (Math.round(singlePrice * count * 10) / 10).toFixed(2));
 
+        setSmallTotal($(this), smallTotalFormula(singlePrice, count))
         setTotalCount();
         setTotalPrice();
     })
 
     $(".numCounterAdd").click(function () {
-        var singlePrice = parseFloat($(this).parent().parent().siblings(".singlePrice").text().substring(1));
+        var singlePrice = getSinglePrice($(this));
         var count = parseFloat($(this).siblings("input[type=number]").val());
 
         count++;
@@ -113,8 +113,8 @@ $(function () {
             count = 0;
         }
         $(this).siblings("input[type=number]").val(count);
-        $(this).parent().parent().siblings(".smallTotal").text("￥" + (Math.round(singlePrice * count * 10) / 10).toFixed(2));
 
+        setSmallTotal($(this), smallTotalFormula(singlePrice, count))
         setTotalCount();
         setTotalPrice();
     })
@@ -137,4 +137,16 @@ function setTotalPrice() {
     })
 
     $(".Total").text("￥" + totalPrice.toFixed(2));
+}
+
+function getSinglePrice(ele) {
+    return parseFloat(ele.parent().parent().siblings(".singlePrice").text().substring(1));
+}
+
+function smallTotalFormula(singlePrice, count) {
+    return (Math.round(singlePrice * count * 10) / 10).toFixed(2);
+}
+
+function setSmallTotal(ele, smallTotal) {
+    ele.parent().parent().siblings(".smallTotal").text("￥" + smallTotal);
 }
